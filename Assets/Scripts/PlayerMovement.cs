@@ -48,4 +48,26 @@ public class PlayerMovement : MonoBehaviour
         // 리지드바디를 이용해 게임 오브젝트 회전 변경
         playerRigidbody.rotation = playerRigidbody.rotation * Quaternion.Euler(0, turn, 0);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IItem item = other.GetComponent<IItem>();
+        if(item != null)
+        {
+            item.Use(gameObject);
+        }
+
+
+        //AmmoPack ammoPack = other.GetComponent<AmmoPack>();
+        //if(ammoPack != null)
+        //{
+        //    ammoPack.Use(gameObject);
+        //}
+
+        //HealthPack healthPack = other.GetComponent<HealthPack>();
+        //if(healthPack != null)
+        //{
+        //    healthPack.Use(gameObject);
+        //}
+    }
 }
